@@ -51,35 +51,29 @@ public class AddParticipantsActivity extends AppCompatActivity {
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(listviewAdapter);
 
-//        btnAddMeeting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                scheduleMeeting();
-//            }
-//        });
+        btnAddMeeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scheduleMeeting();
+            }
+        });
     }
 
-//    private void scheduleMeeting() {
-//
-//        ArrayList<Participant> selectedParticipants= new ArrayList<>();
-//
-//        //find selected participants
-//        for(int i=0;i<participantsList.size();i++){
-//            Participant curr= participantsList.get(i);
-//            if(curr.isSelected()){
-//                selectedParticipants.add(curr);
-//            }
-//        }
-//
-//        //create a new meeting with selected participants
-//        Meeting meeting = new Meeting(meetingName,startTime,endTime,selectedParticipants);
-//
-//        //add meeting to all selected participants
-//        for(int i=0;i<selectedParticipants.size();i++){
-//            Participant p= selectedParticipants.get(i);
-//            p.addMeeting(meeting);
-//            Log.v("participant",p.getName());
-//        }
-//    }
+    private void scheduleMeeting() {
+
+        ArrayList<Participant> selectedParticipants= new ArrayList<>();
+
+        //find selected participants
+        for(int i=0;i<participantsList.size();i++){
+            Participant curr= participantsList.get(i);
+            if(curr.isSelected()){
+                selectedParticipants.add(curr);
+            }
+        }
+
+        //create a new meeting with selected participants
+        Meeting meeting = new Meeting(meetingName,startTime,endTime,selectedParticipants);
+        myDatabase.MeetingDao().addMeeting(meeting);
+    }
 
 }
