@@ -16,17 +16,23 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:hint="1"
+            android:hint="1."
             android:id="@+id/participant_id"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:textStyle="bold"
             android:hint="Amit "
-            android:layout_marginLeft="3dp"
             android:textSize="18sp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/participant_name"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_icon"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_check_box"/>
 
     </LinearLayout>
 
