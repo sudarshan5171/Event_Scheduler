@@ -62,6 +62,7 @@ public class AddParticipantsActivity extends AppCompatActivity {
 
         ArrayList<Participant> selectedParticipants= new ArrayList<>();
 
+
         //find selected participants
         for(int i=0;i<participantsList.size();i++){
             Participant curr= participantsList.get(i);

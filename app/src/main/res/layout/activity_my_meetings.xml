@@ -11,6 +11,21 @@
         android:layout_height="match_parent"
         android:id="@+id/meeting_list"
         android:dividerHeight="0.5dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp">
+
+    </ExpandableListView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_new_meeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="addNewMeeting"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>
