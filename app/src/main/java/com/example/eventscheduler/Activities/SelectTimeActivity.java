@@ -1,7 +1,5 @@
 package com.example.eventscheduler.Activities;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -13,18 +11,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.example.eventscheduler.Database.MyDatabase;
-import com.example.eventscheduler.ModalClass.Participant;
 import com.example.eventscheduler.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class SelectTimeActivity extends AppCompatActivity {
-
-
 
     Button btnStartTime, btnEndTime, btnAddParticipants;
     EditText etStart, etEnd, etMeetingName;

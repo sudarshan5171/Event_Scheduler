@@ -41,9 +41,9 @@ public class ListviewAdapter extends ArrayAdapter<Participant> {
         ImageView addIcon = currentItemView.findViewById(R.id.add_icon);
 
         //setting the list item values
-        pID.setText(Integer.toString(currParticipant.getParticipantId())+".");
+        pID.setText(Integer.toString(currParticipant.getParticipantId())+". ");
         pName.setText(currParticipant.getName());
-        pMail.setText("Email:"+ currParticipant.getEmail());
+        pMail.setText("Email: "+ currParticipant.getEmail());
         addIcon.setVisibility(currParticipant.isSelected() ? View.VISIBLE  : View.GONE);
 
         currentItemView.setOnClickListener(new View.OnClickListener() {

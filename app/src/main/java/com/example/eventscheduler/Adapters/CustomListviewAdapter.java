@@ -7,12 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-
-import com.example.eventscheduler.Activities.MainActivity;
 import com.example.eventscheduler.R;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -102,12 +97,10 @@ public class CustomListviewAdapter extends BaseExpandableListAdapter {
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm a");
         String value = timeList.get(listPosition);
 
-        String date= "Time:"+value.substring(0,8);
-        String time= "Date:"+ value.substring(10,20);
+        String date= "Time: "+value.substring(0,8);
+        String time= "Date: "+ value.substring(10,20);
 
         dateTextView.setText(time);
         timeTextView.setText(date);

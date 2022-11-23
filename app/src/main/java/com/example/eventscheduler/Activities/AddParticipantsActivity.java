@@ -1,13 +1,10 @@
 package com.example.eventscheduler.Activities;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.example.eventscheduler.Adapters.ListviewAdapter;
 import com.example.eventscheduler.Database.MyDatabase;
 import com.example.eventscheduler.ModalClass.Meeting;
