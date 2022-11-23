@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -91,10 +92,12 @@ public class SelectTimeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Log.v("start end st",startTime.toString()+" "+endTime.toString());
+
         //if start time is less than current time
 
         Date currTime=new Date();
-        if(startTime.compareTo(currTime)>0){
+        if(startTime.compareTo(currTime)<0){
             Toast.makeText(this, "Start time can't be less than current time", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -115,8 +118,8 @@ public class SelectTimeActivity extends AppCompatActivity {
         //move to another page
         Bundle bundle = new Bundle();
         bundle.putString("meetingName",meetingName);
-        bundle.putString("startTime",startTime.toString());
-        bundle.putString("endTime",endTime.toString());
+        bundle.putString("startTime",etStart.getText().toString());
+        bundle.putString("endTime",etEnd.getText().toString());
         Intent intent = new Intent(SelectTimeActivity.this, AddParticipantsActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);  //sending bundle
