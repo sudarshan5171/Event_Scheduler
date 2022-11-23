@@ -31,7 +31,7 @@ public class ListviewAdapter extends ArrayAdapter<Participant> {
         //getting the current view
         View currentItemView = convertView;
         if(currentItemView==null){
-            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
+            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_participant,parent,false);
         }
 
         Participant currParticipant = getItem(position);

@@ -13,9 +13,8 @@ import com.example.eventscheduler.ModalClass.Meeting;
 import com.example.eventscheduler.ModalClass.Participant;
 
 @Database(entities = {Participant.class, Meeting.class}, exportSchema = false,version = 1)
-@TypeConverters({Converters.class})
+@TypeConverters({Converters.class,Converters2.class})
 public abstract class MyDatabase extends RoomDatabase {
-
     private static final String DB_NAME= "myDB";
     private static MyDatabase instance;
 

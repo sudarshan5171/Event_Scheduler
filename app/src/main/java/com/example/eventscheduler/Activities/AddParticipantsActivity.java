@@ -2,6 +2,7 @@ package com.example.eventscheduler.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -74,6 +75,9 @@ public class AddParticipantsActivity extends AppCompatActivity {
         //create a new meeting with selected participants
         Meeting meeting = new Meeting(meetingName,startTime,endTime,selectedParticipants);
         myDatabase.MeetingDao().addMeeting(meeting);
+
+        Intent intent = new Intent(getApplicationContext(),MyMeetings.class);
+        startActivity(intent);
     }
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public interface MeetingDao {
 
     @Query("select * from Meeting")
-    List<Meeting> getParticipants();
+    List<Meeting> getMeeetings();
 
     @Insert
     void addMeeting(Meeting m);
