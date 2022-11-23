@@ -25,4 +25,5 @@ public interface MeetingDao {
 
     @Delete
     void deleteMeeting(Meeting m);
+
 }

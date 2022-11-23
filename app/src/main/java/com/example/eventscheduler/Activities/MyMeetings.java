@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.eventscheduler.Adapters.CustomListviewAdapter;
@@ -27,9 +30,9 @@ public class MyMeetings extends AppCompatActivity {
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableTitleList;
     HashMap<String, List<String>> expandableDetailList;
-    FloatingActionButton fab;
     public MyDatabase myDatabase;
     ArrayList<String>timeList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,31 @@ public class MyMeetings extends AppCompatActivity {
         expandableTitleList = new ArrayList<String>(expandableDetailList.keySet());
         expandableListAdapter = new CustomListviewAdapter(this, expandableTitleList, expandableDetailList,timeList);
         expandableListViewExample.setAdapter(expandableListAdapter);
+
+        expandableListViewExample.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int index, long l) {
+                PopupMenu popupMenu = new PopupMenu(getApplicationContext(),view);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        if(menuItem.getTitle()=="Delete"){
+                            //delete database
+                            Toast.makeText(getApplicationContext(), "Delete meeting", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(menuItem.getTitle()=="Update"){
+                            //update database
+                            Toast.makeText(getApplicationContext(), "Update meeting", Toast.LENGTH_SHORT).show();
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+                return false;
+            }
+        });
+
     }
 
     private ArrayList<String> getTimeList() {
@@ -59,7 +87,6 @@ public class MyMeetings extends AppCompatActivity {
     private HashMap<String, List<String>> getData() {
         ArrayList<Meeting>meetings = (ArrayList<Meeting>) myDatabase.MeetingDao().getMeeetings();
         HashMap<String, List<String>> result = new HashMap<>();
-
         //adding meetings
         for(int i=0;i<meetings.size();i++){
             Meeting meeting = meetings.get(i);
@@ -74,7 +101,6 @@ public class MyMeetings extends AppCompatActivity {
             }
             result.put(meetingName,participantNames);
         }
-
         return result;
     }
 

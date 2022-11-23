@@ -21,7 +21,6 @@ public class AddParticipantsActivity extends AppCompatActivity {
     String startTime,endTime,meetingName;
     FloatingActionButton btnAddMeeting;
     ArrayList<Participant> participantsList;
-
     public String dateFormat = "hh:mm a  dd-MM-yyyy";
 
     @Override
