@@ -8,6 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Items"
+        android:textSize="18sp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp" />
 

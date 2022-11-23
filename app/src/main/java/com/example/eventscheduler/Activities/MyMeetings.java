@@ -17,6 +17,7 @@ import com.example.eventscheduler.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class MyMeetings extends AppCompatActivity {
     HashMap<String, List<String>> expandableDetailList;
     FloatingActionButton fab;
     public MyDatabase myDatabase;
-
+    ArrayList<String>timeList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +39,21 @@ public class MyMeetings extends AppCompatActivity {
         myDatabase = MyDatabase.getDB(this);;  //getinstance
 
         expandableDetailList = getData();
+        timeList = getTimeList();
         expandableTitleList = new ArrayList<String>(expandableDetailList.keySet());
-        expandableListAdapter = new CustomListviewAdapter(this, expandableTitleList, expandableDetailList);
+        expandableListAdapter = new CustomListviewAdapter(this, expandableTitleList, expandableDetailList,timeList);
         expandableListViewExample.setAdapter(expandableListAdapter);
+    }
 
+    private ArrayList<String> getTimeList() {
+        ArrayList<String>result = new ArrayList<>();
+        ArrayList<Meeting>allMeetings = (ArrayList<Meeting>) myDatabase.MeetingDao().getMeeetings();
 
+        for(int i=0;i<allMeetings.size();i++){
+            Meeting m=allMeetings.get(i);
+            result.add(m.getStartTime());
+        }
+        return result;
     }
 
     private HashMap<String, List<String>> getData() {
@@ -61,7 +72,6 @@ public class MyMeetings extends AppCompatActivity {
                 Participant participant = participants.get(j);
                 participantNames.add(participant.getName());
             }
-
             result.put(meetingName,participantNames);
         }
 

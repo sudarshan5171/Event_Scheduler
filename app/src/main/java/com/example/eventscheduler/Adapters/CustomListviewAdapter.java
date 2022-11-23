@@ -8,8 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.example.eventscheduler.Activities.MainActivity;
 import com.example.eventscheduler.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,14 +21,15 @@ public class CustomListviewAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> expandableTitleList;
     private HashMap<String, List<String>> expandableDetailList;
-
+    private List<String> timeList;
     // constructor
 
 
-    public CustomListviewAdapter(Context context, List<String> expandableTitleList, HashMap<String, List<String>> expandableDetailList) {
+    public CustomListviewAdapter(Context context, List<String> expandableTitleList, HashMap<String, List<String>> expandableDetailList, ArrayList<String> timeList) {
         this.context = context;
         this.expandableTitleList = expandableTitleList;
         this.expandableDetailList = expandableDetailList;
+        this.timeList=timeList;
     }
 
     @Override
@@ -89,9 +94,26 @@ public class CustomListviewAdapter extends BaseExpandableListAdapter {
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_title_meeting, null);
         }
+
+        TextView dateTextView = convertView.findViewById(R.id.meetingDate);
+        TextView timeTextView = convertView.findViewById(R.id.meetingTime);
         TextView listTitleTextView = (TextView) convertView.findViewById(R.id.listTitle);
+
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm a");
+        String value = timeList.get(listPosition);
+
+        String date= "Time:"+value.substring(0,8);
+        String time= "Date:"+ value.substring(10,20);
+
+        dateTextView.setText(time);
+        timeTextView.setText(date);
+
+        System.out.println("set up time"+ timeList.get(listPosition) + " "+ time);
+
         return convertView;
     }
 

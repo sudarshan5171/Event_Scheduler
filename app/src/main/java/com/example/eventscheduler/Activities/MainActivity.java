@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createParticipantsDatabase() {
         for(int i=1;i<=20;i++){
-            String name = "Alpha Singh"+i;
+            String name = "Alpha Singh "+ i;
             String mail = "alpha"+i+"@gmail.com";
             Participant p=new Participant(name,mail);
             myDatabase.ParticipantDao().addParticipant(p);
