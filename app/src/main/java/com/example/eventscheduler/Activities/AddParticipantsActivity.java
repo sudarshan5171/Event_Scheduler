@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -15,7 +14,6 @@ import com.example.eventscheduler.ModalClass.Participant;
 import com.example.eventscheduler.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AddParticipantsActivity extends AppCompatActivity {
@@ -34,7 +32,7 @@ public class AddParticipantsActivity extends AppCompatActivity {
 
         btnAddMeeting = findViewById(R.id.floatingActionButton);
 
-        myDatabase = MainActivity.myDatabase;  //get instance
+        myDatabase = MyDatabase.getDB(this);  //get instance
 
         //get bundle from intent
         Bundle bundle = getIntent().getExtras();
